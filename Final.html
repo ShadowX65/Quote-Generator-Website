@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator || Best Quotes ever to make your day</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="icon" href="https://www.iconarchive.com/download/i106902/goodstuff-no-nonsense/free-space/stars.ico" 
+    type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Texturina:ital,wght@1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color : #001233;
+    --secondary-color : #011e53;
+    --dark-color :  rgba(1, 1, 26, 0.651);
+    --bg-color : rgb(145 182 183);
+}
+body {
+    display: flex;
+    height: 100vh;
+}
+nav {
+    width: 25%;
+    height: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    border-right: 4px white solid;
+    box-shadow: 7px 0px 10px 1px rgba(0, 0, 0, 0.644);
+}
+main {
+    height: 100%;
+    width: 75%;
+    background-color: var(--bg-color);
+}
+nav a {
+    color: white;
+    text-decoration-line: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+}
+nav div {
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+nav ul {
+    display: flex;
+    flex-direction: column;
+
+    height: 75%;
+}
+nav section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    height: 10%;
+}
+nav ul li {
+    list-style: none;
+    width: 100%;
+    padding: 15px 15px 15px 30px;
+    border-bottom: 1px solid rgba(1, 1, 1, 0.726);
+    transition-duration: 0.3s;
+    font-size: 1.4rem;
+}
+nav ul li:nth-child(7) {
+    border-bottom: 1px solid rgba(1, 1, 1, 0);
+}
+nav ul li:hover {
+    background-color: var(--dark-color);
+    transition-duration: 0.3s;
+}
+nav div h1 {
+    font-size: 2.2rem;
+}
+article {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+#box-heading {
+    display: flex;
+    flex-direction: column;
+    height: 13%;
+    background-color: var(--secondary-color);
+    color: white;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    border-bottom: 3px solid white;
+    box-shadow: 10px 2px 50px 20px rgba(0, 0, 0, 0.219);
+}
+#quote-area {
+    height: 78%;
+}
+#quote-buttons {
+    height: 9%;
+}
+#box-heading h1 {
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 3rem;
+    font-family: monospace;
+}
+
+#quote-buttons {
+    display: flex;
+}
+#quote-buttons div{
+    width: 50%;
+    height: 100%;
+}
+#quote-buttons button {
+    height: 100%;
+    width: 100%;
+    color: white;
+    background-color: var(--primary-color);
+    font-size: 1.2rem;
+    border: 1px var(--primary-color) solid;
+    transition-duration: 0.2s;
+}
+#next-quote-box span {
+    cursor: pointer;
+}
+#quote-buttons a {
+    width: 100%;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+}
+#next-quote-box button:hover , #twitter-box button:hover {
+    background-color: var(--secondary-color);
+    transition-duration: 0.2s;
+}
+#quote-buttons button:focus {
+    outline: none;
+}
+
+/* // ------------------------------------------------------ */
+
+#quote-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#quote-box {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 30px;
+    margin: 7% 10%;
+    border-radius: 8px;
+    transition-duration: 0.3s;
+}
+#quote-box span {
+    font-size: 2rem;
+}
+#author {
+    display: block;
+    font-family: 'Texturina', monospace;
+    text-align: right;
+    padding-right: 40px;
+}
+#quote {
+    display: inline-block;
+    font-family: 'Yeon Sung', monospace;
+    text-align: center;
+}
+#quote-box:hover{
+    background-color: var(--secondary-color);
+    transition-duration: 0.3s;
+}
+
+    </style>
+</head>
+
+<body>
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
+
+    <!-- NAV BAR --------------------------------------------------------------------- -->
+    <nav>
+        <div id="nav-heading">
+            <h1>Categories</h1>
+        </div>
+
+        <ul>
+            <li class="nav-btns" id="nav-btn-1"
+             onclick="motivational()">Motivational</li>
+            <li class="nav-btns" id="nav-btn-2"
+             onclick="inspirational()">Inspirational</li>
+            <li class="nav-btns" id="nav-btn-3"
+             onclick="life()">Life</li>
+            <li class="nav-btns" id="nav-btn-4"
+             onclick="romantic()">Romantic</li>
+            <li class="nav-btns" id="nav-btn-5"
+             onclick="scientific()">Scientific</li>
+            <li class="nav-btns" id="nav-btn-6"
+             onclick="programming()" >Programming</li>
+            <li class="nav-btns" id="nav-btn-7"
+             onclick="technology()">Technology</li>
+        </ul>
+
+        <section id="credit">
+            <h3>Page made by <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Shadow San</a></h3>
+        </section>
+    </nav>
+
+    <!-- QUOTE BOX -->
+
+    <main>
+        <article>
+
+
+            <div id="box-heading">
+
+                <div><h1>Welcome to Quote Generator</h1></div>
+
+            </div>
+
+            <div id="quote-area">
+                <div id="quote-box">
+
+                    <div id="quote-sec">
+                        <span id="quote"></span>
+                    </div>
+                    <br>
+                    <div id="author-sec">
+                       <span id="author"></span>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div id="quote-buttons">
+                <div id="next-quote-box">
+                        <button onclick="changeQuote()"> <i class="fas fa-arrow-right"></i> <span> Random </span> </button>
+                </div>
+                <div id="twitter-box">
+                        <button><a href="twitter.com/intent/tweet/" target="_blank">
+                        <i class="fab fa-twitter"></i> <span> Tweet </span> </a></button>
+                </div>
+            </div>
+
+
+        </article>
+    </main>
+
+
+
+
+    
+    <script>
+        // Making an array of quotes
+// -----------------------------------
+// MOTIVATIONAL QOUTES
+
+var Motivational_Quotes = [
+    "All our dreams can come true, if we have the courage to pursue them.",
+    "The secret of getting ahead is getting started.",
+    "Don’t limit yourself. Many people limit themselves to what they think they can do. You can go as far as your mind lets you. What you believe, remember, you can achieve.",
+    "The best time to plant a tree was 20 years ago. The second best time is now.",
+    "It’s hard to beat a person who never gives up.",
+    "I wake up every morning and think to myself, ‘how far can I push this company in the next 24 hours.",
+    "If people are doubting how far you can go, go so far that you can’t hear them anymore.",
+    "Write it. Shoot it. Publish it. Crochet it, sauté it, whatever. MAKE.",
+    "Everything you can imagine is real.",
+    "When one door of happiness closes, another opens; but often we look so long at the closed door that we do not see the one which has been opened for us.",
+    "Do one thing every day that scares you.",
+    "Happiness is not something ready made. It comes from your own actions.",
+    "Whatever you are, be a good one.",
+    "If something is important enough, even if the odds are stacked against you, you should still do it.",
+    "Don’t be afraid to give up the good to go for the great.",
+    "It was a Monday and they walked on a tightrope to the sun."
+    ]
+    var Motivational_Authers = [
+    "-Walt Disney",
+    "-Mark Twain",
+    "-Mary Kay Ash",
+    "-Chinese Proverb",
+    "-Babe Ruth",
+    "-Leah Bosque",
+    "-Michele Ruiz",
+    "-Joss Whedon",
+    "-Pablo Picasso",
+    "-Hellen Keller",
+    "-Eleanor Roosevelt",
+    "-Dalai Lama XIV",
+    "-Abraham Lincoln",
+    "-Elon Musk",
+    "-John D. Rockefeller",
+    "-Marcus Zusak"
+    ]
+    
+    // -------------------------------------
+    
+    var Inspirational_Quotes = [
+      "No one is to blame for your future situation but yourself. If you want to be successful, then become Successful.",
+      "Things may come to those who wait, but only the things left by those who hustle.",
+      "Everything comes to him who hustles while he waits.",
+      "Every sucessful person in the world is a hustler one way or another. We all hustle to get where we need to be. Only a fool would sit around and wait on another man to feed him.",
+      "Greatness only comes before hustle in the dictionary.",
+      "Without hustle, talent will only carry you so far.",
+      "Work like there is someone working twenty four hours a day to take it away from you.",
+      "The hard days are what make you stronger.",
+      "If you believe it’ll work out, you’ll see opportunities. If you don’t believe it’ll work out, you’ll see obstacles.",
+      "Keep your eyes on the stars, and your feet on the ground.",
+      "You can waste your lives drawing lines. Or you can live your life crossing them.",
+      "You’ve got to get up every morning with determination if you’re going to go to bed with satisfaction.",
+      "I now tried a new hypothesis: It was possible that I was more in charge of my happiness than I was allowing myself to be.",
+      "In a gentle way, you can shake the world.",
+      "If opportunity doesn’t knock, build a door.",
+      "Work hard in silence, let your success be the noise."
+    ]
+    var Inspirational_Authors = [
+      "-Jaymin Shah",
+      "-Abraham Lincoln",
+      "-Thomas Edison",
+      "-K'wan",
+      "-Ross Simmonds",
+      "-Gary Vaynerchuk",
+      "-Mark Cuban",
+      "-Aly Raisman",
+      "-Wayne Dyer",
+      "-Theodre Roosevelt",
+      "-Shonda Rhimes",
+      "-George Lorimer",
+      "-Michelle Obama",
+      "-Mahatma Gandhi",
+      "-Kurt Cobain",
+      "-Frank Ocean"
+    ]
+    
+    // -------------------------------------------
+    
+    // LIFE QUOTES ------------------------------------
+    
+    var Life_Quotes = [
+      "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+      "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.",
+      "If life were predictable it would cease to be life, and be without flavor.",
+      "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough.",
+      "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.",
+      "Life is what happens when you're busy making other plans.",
+      "Tell me and I forget. Teach me and I remember. Involve me and I learn.",
+      "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart.",
+      "It is during our darkest moments that we must focus to see the light.",
+      "Whoever is happy will make others happy too.",
+      "Do not go where the path may lead, go instead where there is no path and leave a trail.",
+      "Life is here for us to become kinder, I live life everyday hoping I was a slightly kinder person than I was the day before",
+      "When you reach the end of your rope, tie a knot in it and hang on." ,
+      "Always remember that you are absolutely unique. Just like everyone else.",
+      "Don't judge each day by the harvest you reap but by the seeds that you plant.",
+      "The future belongs to those who believe in the beauty of their dreams.",
+    ]
+    var Life_Authors = [
+      "-Nelson Mandela",
+      "-Steve Jobs",
+      "-Eleanor Roosevelt",
+      "-Oprah Winfrey",
+      "-James Cameron",
+      "-John Lennon",
+      "-Benjamin Franklin",
+      "-Helen Keller",
+      "-Aristotle",
+      "-Anne Frank",
+      "-Ralph Waldo Emerson",
+      "-Shoko Makinohara",
+      "-Franklin D. Roosevelt",
+      "-Margaret Mead",
+      "-Robert Louis Stevenson",
+      "-Eleanor Roosevelt"
+    ]
+    
+    // ----------------------------------------------------
+    
+    // ROMANTIC QUOTES
+    
+    var Romantic_Quotes = [
+      "To me, you are perfect.",
+      "True love is putting someone else before yourself.",
+      "I fell in love the way you fall asleep: slowly, and then all at once.",
+      "You know you’re in love when you can’t fall asleep because reality is finally better than your dreams.",
+      "You’re the closest to heaven, that I’ll ever be.",
+      "I didn’t know you this morning, and now I don’t remember not knowing you.",
+      "Do not urge me to leave you or turn back from you. Where you go, I will go. Where you stay, I will stay.",
+      "No matter what happens, I will never, not in a thousand tragic outcomes, ever regret loving you.",
+      "I’m not going far. I’ll always be here. Just an inch away. I promise.",
+      "Break my heart. Break it a thousand times if you like. It was only ever yours to break.",
+      "See, the thing about the falling in love montage is that when it’s over, the characters have fallen in love.",
+      "Unlike anyone I’d ever met, this girl could so very easily make my heart her complete bitch.",
+      "If longing is madness, then none of us are sane.",
+      "If I’m gonna die, I want to die having said yes to her as many times as I can.",
+      "The story that I love you, it has no end",
+      "I’m not leaving you. You are worth the risk, do you hear me? You’re always going to be worth the risk."
+    ]
+    var Romantic_Authors = [
+      "-Love Actually",
+      "-Frozen",
+      "-Startyza",
+      "-Gone Wind",
+      "-Iris Dolls",
+      "-Nicola Yoon",
+      "-Shelby Mahurin",
+      "-Sara Raasch",
+      "-Rachael Lippincott",
+      "-Kiera Cass",
+      "-Ciara Smyth",
+      "-Ben Philippe",
+      "-Nina Varela",
+      "-Leah Johnson",
+      "-Cassandra Clare",
+      "-Kathryn Purdie"
+    
+    ]
+    
+    // -----------------------------------------------------
+    
+    // Scientific QUOTES -------------------------------------
+    
+    var Scientific_Quotes = [
+      "In the beginning there was nothing, which exploded.",
+      "Nothing happens until something moves.",
+      "Our civil rights have no dependence on our religious opinions any more than our opinions in physics or geometry...",
+      "Photons have mass? I didn’t even know they were Catholic.",
+      "No, this trick won't work... How on earth are you ever going to explain in terms of chemistry and physics so important a biological phenomenon as first love?",
+      "Not only is the Universe stranger than we think, it is stranger than we can think.",
+      "Ronan didn't need physics. He could intimidate even a piece of plywood into doing what he wanted.",
+      "The release of atomic power has changed everything except our way of thinking ... the solution to this problem lies in the heart of mankind. If only I had known, I should have become a watchmaker. ",
+      "How wonderful that we have met with a paradox. Now we have some hope of making progress.",
+      "All increasing or dominant species (and it is from these that new species arise) vary considerably, in all their parts, organs and faculties, in every generation.",
+      "Biology is the most powerful technology ever created. DNA is software, protein are hardware, cells are factories.",
+      "Biology is the study of complicated things that have the appearance of having been designed with a purpose.",
+      "Nothing in biology makes sense except in the light of evolution.",
+      "Science is beautiful when it makes simple explanations of phenomena or connections between different observations. Examples include the double helix in biology and the fundamental equations of physics.",
+      "You can't even begin to understand biology, you can't understand life, unless you understand what it's all there for, how it arose - and that means evolution.",
+      "The potential for synthetic biology and biotechnology is vast; we all have an opportunity to create the future together."
+    
+    ]
+    
+    var Scientific_Authors = [
+      "-Terry Pratchett",
+      "-Albert Einstein",
+      "-Thomas Jefferson",
+      "-Woody Allen",
+      "-Albert Einstein",
+      "-Maggie Stiefvater",
+      "-Einstein",
+      "-Niels Bohr",
+      "-Alfred Russel",
+      "-Arvind Gupta",
+      "-Richard Dawkins",
+      "-Theodosius Dobzhansky",
+      "-Stephen Hawking",
+      "-Richard Dawkins",
+      "-Ryan Bethencourt",
+      "-Walter Gilbert"
+    
+    ]
+    
+    // ---------------------------------------------------------------------
+    
+    // Programming quotes
+    
+    var Programming_Quotes = [
+      "Talk is cheap. Show me the code.",
+      "Programs must be written for people to read, and only incidentally for machines to execute.",
+      "Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live",
+      "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+      "“I'm not a great programmer; I'm just a good programmer with great habits.",
+      "Truth can only be found in one place: the code.",
+      "Give a man a program, frustrate him for a day. Teach a man to program, frustrate him for a lifetime.",
+      "How you look at it is pretty much how you'll see it",
+      "That's the thing about people who think they hate computers. What they really hate is lousy programmers.",
+      "You've baked a really lovely cake, but then you've used dog shit for frosting.",
+      "A language that doesn't affect the way you think about programming is not worth knowing.",
+      "Walking on water and developing software from a specification are easy if both are frozen.",
+      "The most disastrous thing that you can ever learn is your first programming language.",
+      "The most important property of a program is whether it accomplishes the intention of its user.",
+      "Object-oriented programming offers a sustainable way to write spaghetti code. It lets you accrete programs as a series of patches.",
+      "A conscious human is driven by their conscience, not popular opinion."
+    
+    ]
+    var Programming_Authors = [
+      "-Linus Torvalds",
+      "-Hardnold Abelson",
+      "-John Woods",
+      "-Martin Fowler",
+      "-Kent Beck",
+      "-Craftsmanship",
+      "-M. Waseem",
+      "-Rasheed Ogunlaru",
+      "-Larry Niven",
+      "-Steve Jobs",
+      "-Alan J. Perlis",
+      "-Edward V. Berard",
+      "-Alan Kay",
+      "-CAR Hoare",
+      "-Paul Graham",
+      "-Suzy Kassem"
+    ]
+    
+    // ----------------------------------------------------------------------
+    
+    // Technology quotes --------------------------------------
+    
+    var Technology_Quotes = [
+      "No doubt one may quote history to support any cause, as the devil quotes scripture.",
+      "It has become appallingly obvious that our technology has exceeded our humanity.",
+      "I do not fear computers. I fear lack of them.",
+      "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution.",
+      "We have to stop optimizing for programmers and start optimizing for users.",
+      "Never trust a computer you can’t throw out a window.",
+      "Everything is designed. Few things are designed well.",
+      "The world won't care about your self-esteem. The world will expect you to accomplish something BEFORE you feel good about yourself.",
+      "Simplicity is about subtracting the obvious and adding the meaningful.",
+      "It is only when they go wrong that machines remind you how powerful they are.",
+      "The Web as I envisaged it, we have not seen it yet. The future is still so much bigger than the past.",
+      "Once a new technology rolls over you, if you're not part of the steamroller, you're part of the road.",
+      "It's not a faith in technology. It's faith in people.",
+      "Technology is a useful servant but a dangerous master.",
+      "The advance of technology is based on making it fit in so that you don't really even notice it, so it's part of everyday life.",
+      "Just because something doesn’t do what you planned it to do doesn’t mean it’s useless."
+    
+    ]
+    var Technology_Authors = [
+      "-Learned Hand",
+      "-Albert Einstein",
+      "-Isaac Asimov",
+      "-Albert Einstein",
+      "-Jeff Atwood",
+      "-Steve Wozniak",
+      "-Brian Reed",
+      "-Bill Gates",
+      "-John Maeda",
+      "-Clive James",
+      "-Tim Berners",
+      "-Stewart Brand",
+      "-Steve Jobs",
+      "-Louse Lange",
+      "-Bill Gates",
+      "-Thomas Edison"
+    
+    ]
+    
+    // -------------------------------------------------------------------------------
+    
+    // ALL ARRAYS VALUE DATA STORED SUCCESFULLY
+    
+    // METADATA : 
+    // EACH ARRAY LENGTH IS 16 , WITH 15 INDEXES
+    // TOTAL ARRAYS ARE 7 PAIR (QOUTES AND AUTHORS) WITH LISTS AS :
+    // MOTIVATIONAL , Inspirational , LIFE , ROMANTIC , Scientific , Programming . Technology
+    
+    // -------------------------------------------------------------------------------
+    
+    // Merging all Arrays into 'allQoutes' single array
+    
+    var allQuotes = [];
+    Motivational_Quotes.forEach(x => allQuotes.push(x));
+    Inspirational_Quotes.forEach(x => allQuotes.push(x));
+    Life_Quotes.forEach(x => allQuotes.push(x));
+    Romantic_Quotes.forEach(x => allQuotes.push(x));
+    Scientific_Quotes.forEach(x => allQuotes.push(x));
+    Programming_Quotes.forEach(x => allQuotes.push(x));
+    Technology_Quotes.forEach(x => allQuotes.push(x));
+    
+    // DONE -------------------
+    
+    // Merging All Authors into "allAuthors" single array
+    
+    var allAuthors = [];
+    Motivational_Authers.forEach(x => allAuthors.push(x));
+    Inspirational_Authors.forEach(x => allAuthors.push(x));
+    Life_Authors.forEach(x => allAuthors.push(x));
+    Romantic_Authors.forEach(x => allAuthors.push(x));
+    Scientific_Authors.forEach(x => allAuthors.push(x));
+    Programming_Authors.forEach(x => allAuthors.push(x));
+    Technology_Authors.forEach(x => allAuthors.push(x));
+    
+    // ALGORITHM SCRIPTING -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Default Quote
+let index = Math.round(Math.random() * 111)
+document.getElementById('quote').innerHTML = allQuotes[index];
+document.getElementById('author').innerHTML = allAuthors[index];
+
+// ------------------ ALL QUOTES --------------------------------------------
+
+var arr_Allquotes = [];
+function changeQuote() {
+
+  let index = Math.round(Math.random() * 111)
+   if (arr_Allquotes.length == 110) {
+       arr_Allquotes = [];
+       document.getElementById("quote-box").style.display = "none";
+       setInterval(() => {
+           document.getElementById("quote-box").style.display = "block";
+           document.getElementById("quote").innerHTML = allQuotes[index];
+           document.getElementById("author").innerHTML = allAuthors[index];
+       }, 1000)
+      arr_Allquotes.push(index);
+   } 
+   else if (arr_Allquotes == []) {
+    document.getElementById("quote-box").style.display = "none";
+    setInterval(() => {
+        document.getElementById("quote-box").style.display = "block";
+        document.getElementById("quote").innerHTML = allQuotes[index];
+        document.getElementById("author").innerHTML = allAuthors[index];
+    }, 1000)
+          arr_Allquotes.push(index);
+   } 
+   else {
+          let value = 0;
+          for (let i = 0; i < arr_Allquotes.length; i++) {
+              if (index === arr_Allquotes[i]) {
+                  value += 1;
+              }
+          }
+          if (value == 0) {
+            document.getElementById("quote-box").style.display = "none";
+            setInterval(() => {
+                document.getElementById("quote-box").style.display = "block";
+                document.getElementById("quote").innerHTML = allQuotes[index];
+                document.getElementById("author").innerHTML = allAuthors[index];
+            }, 1000)
+              arr_Allquotes.push(index);
+              return console.log(index);
+          } else if (value > 0) {
+              changeQuote();
+          }
+       }
+   }
+  
+// ----------------------------- MOTIVATIONAL -------------------------------
+  
+  var arr_motivational = [];
+  function motivational() {
+  
+    let index = Math.round(Math.random() * 15)
+     if (arr_motivational.length == 14) {
+        arr_motivational = [];
+         document.getElementById("quote").innerHTML = Motivational_Quotes[index];
+         document.getElementById("author").innerHTML = Motivational_Authers[index];
+         arr_motivational.push(index);
+     }
+
+     else if (arr_motivational == []) {
+        document.getElementById("quote").innerHTML = Motivational_Quotes[index];
+        document.getElementById("author").innerHTML = Motivational_Authers[index];
+        arr_motivational.push(index);
+     }
+
+     else {
+            let value = 0;
+            for (let i = 0; i < arr_motivational.length; i++) {
+                if (index === arr_motivational[i]) {
+                    value += 1;
+                }
+            }
+            if (value == 0) {
+                document.getElementById("quote").innerHTML = Motivational_Quotes[index];
+                document.getElementById("author").innerHTML = Motivational_Authers[index];
+                arr_motivational.push(index);
+                return console.log(index);
+            } else if (value > 0) {
+                motivational();
+            }
+         }
+     }
+    
+// --------------------------- INSPIRATIONAL -------------------------------
+
+
+var arr_inspirational = [];
+function inspirational() {
+
+  let index = Math.round(Math.random() * 15)
+   if (arr_inspirational .length == 14) {
+    arr_inspirational  = [];
+      document.getElementById("quote").innerHTML = Inspirational_Quotes[index];
+      document.getElementById("author").innerHTML = Inspirational_Authors[index];
+      arr_inspirational.push(index);
+   }
+
+   else if (arr_inspirational  == []) {
+    document.getElementById("quote").innerHTML = Inspirational_Quotes[index];
+    document.getElementById("author").innerHTML = Inspirational_Authors[index];
+    arr_inspirational.push(index);
+   }
+
+   else {
+          let value = 0;
+          for (let i = 0; i < arr_inspirational.length; i++) {
+              if (index === arr_inspirational[i]) {
+                  value += 1;
+              }
+          }
+          if (value == 0) {
+            document.getElementById("quote").innerHTML = Inspirational_Quotes[index];
+            document.getElementById("author").innerHTML = Inspirational_Authors[index];
+            arr_inspirational.push(index);
+              return console.log(index);
+          } else if (value > 0) {
+            inspirational();
+          }
+       }
+   }
+  
+// ------------------------------ LIFE -----------------------------------------------
+
+var arr_life = [];
+function life() {
+
+  let index = Math.round(Math.random() * 15)
+   if (arr_life.length == 14) {
+    arr_life = [];
+    document.getElementById("quote").innerHTML = Life_Quotes[index];
+    document.getElementById("author").innerHTML = Life_Authors[index];
+    arr_life.push(index);
+   }
+
+   else if (arr_life  == []) {
+    document.getElementById("quote").innerHTML = Life_Quotes[index];
+    document.getElementById("author").innerHTML = Life_Authors[index];
+    arr_life.push(index);
+   }
+
+   else {
+          let value = 0;
+          for (let i = 0; i < arr_life.length; i++) {
+              if (index === arr_life[i]) {
+                  value += 1;
+              }
+          }
+          if (value == 0) {
+            document.getElementById("quote").innerHTML = Life_Quotes[index];
+            document.getElementById("author").innerHTML = Life_Authors[index];
+            arr_life.push(index);
+              return console.log(index);
+          } else if (value > 0) {
+            life();
+          }
+       }
+   }
+  
+
+// ------------------------ ROMANTIC ----------------------------------------
+
+  var arr_romantic = [];
+  function romantic() {
+  
+    let index = Math.round(Math.random() * 15)
+     if (arr_romantic.length == 14) {
+         arr_romantic = [];
+         document.getElementById("quote").innerHTML = Romantic_Quotes[index];
+        document.getElementById("author").innerHTML = Romantic_Authors[index];
+        arr_romantic.push(index);
+     }
+
+     else if (arr_romantic == []) {
+            document.getElementById("quote").innerHTML = Romantic_Quotes[index];
+            document.getElementById("author").innerHTML = Romantic_Authors[index];
+            arr_romantic.push(index);
+     }
+
+     else {
+            let value = 0;
+            for (let i = 0; i < arr_romantic.length; i++) {
+                if (index === arr_romantic[i]) {
+                    value += 1;
+                }
+            }
+            if (value == 0) {
+                document.getElementById("quote").innerHTML = Romantic_Quotes[index];
+                document.getElementById("author").innerHTML = Romantic_Authors[index];
+                arr_romantic.push(index);
+                return console.log(index);
+            } else if (value > 0) {
+                romantic();
+            }
+         }
+     }
+    
+     // -------------------------- SCIENTIFIC --------------------------------
+
+     var arr_scientific = [];
+     function scientific() {
+     
+       let index = Math.round(Math.random() * 15)
+        if (arr_scientific.length == 14) {
+            arr_scientific = [];
+            document.getElementById("quote").innerHTML = Scientific_Quotes[index];
+           document.getElementById("author").innerHTML = Scientific_Authors[index];
+           arr_scientific.push(index);
+        }
+   
+        else if (arr_scientific == []) {
+            document.getElementById("quote").innerHTML = Scientific_Quotes[index];
+           document.getElementById("author").innerHTML = Scientific_Authors[index];
+               arr_scientific.push(index);
+        }
+   
+        else {
+               let value = 0;
+               for (let i = 0; i < arr_scientific.length; i++) {
+                   if (index === arr_scientific[i]) {
+                       value += 1;
+                   }
+               }
+               if (value == 0) {
+                document.getElementById("quote").innerHTML = Scientific_Quotes[index];
+                document.getElementById("author").innerHTML = Scientific_Authors[index];
+                   arr_scientific.push(index);
+                   return console.log(index);
+               } else if (value > 0) {
+                   scientific();
+               }
+            }
+        }
+       
+   
+     // -------------------------- PROGRAMMING --------------------------------
+
+     var arr_programming = [];
+     function programming() {
+     
+       let index = Math.round(Math.random() * 15)
+        if (arr_programming.length == 14) {
+            arr_programming = [];
+            document.getElementById("quote").innerHTML = Programming_Quotes[index];
+            document.getElementById("author").innerHTML = Programming_Authors[index];
+            arr_programming.push(index);
+        }
+   
+        else if (arr_programming == []) {
+            document.getElementById("quote").innerHTML = Programming_Quotes[index];
+            document.getElementById("author").innerHTML = Programming_Authors[index];
+            arr_programming.push(index);
+        }
+   
+        else {
+               let value = 0;
+               for (let i = 0; i < arr_programming.length; i++) {
+                   if (index === arr_programming[i]) {
+                       value += 1;
+                   }
+               }
+               if (value == 0) {
+                document.getElementById("quote").innerHTML = Programming_Quotes[index];
+                document.getElementById("author").innerHTML = Programming_Authors[index];
+                arr_programming.push(index);
+                   return console.log(index);
+               } else if (value > 0) {
+                programming();
+               }
+            }
+        }
+
+
+// -------------------------- TECHNOLOGY--------------------------------
+
+     var arr_technology = [];
+     function technology() {
+     
+       let index = Math.round(Math.random() * 15)
+        if (arr_technology.length == 14) {
+            arr_technology = [];
+            document.getElementById("quote").innerHTML = Technology_Quotes[index];
+            document.getElementById("author").innerHTML = Technology_Authors[index];
+            arr_technology.push(index);
+        }
+   
+        else if (arr_technology == []) {
+            document.getElementById("quote").innerHTML = Technology_Quotes[index];
+            document.getElementById("author").innerHTML = Technology_Authors[index];
+            arr_technology.push(index);
+        }
+   
+        else {
+               let value = 0;
+               for (let i = 0; i < arr_technology.length; i++) {
+                   if (index === arr_technology[i]) {
+                       value += 1;
+                   }
+               }
+               if (value == 0) {
+                document.getElementById("quote").innerHTML = Technology_Quotes[index];
+                document.getElementById("author").innerHTML = Technology_Authors[index];
+                arr_technology.push(index);
+                   return console.log(index);
+               } else if (value > 0) {
+                technology();
+               }
+            }
+        }
+
+// -------------------------- THE END OF SCRIPT ;) ------------------------------------
+    </script>
+</body>
+
+</html>
